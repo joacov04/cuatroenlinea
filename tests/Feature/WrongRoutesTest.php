@@ -24,7 +24,7 @@ class WrongRoutesTest extends TestCase
 
     public function test_char_in_route()
     {
-        $response = $this->get('/jugar/a');
+        $response = $this->get('/jugar/ab');
 
         $response->assertStatus(200);
     }
