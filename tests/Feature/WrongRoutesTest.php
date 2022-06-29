@@ -9,6 +9,7 @@ class WrongRoutesTest extends TestCase
 {
     public function test_invalid_number_left()
     {
+        // comment for test
         $response = $this->get('/jugar/0');
 
         $response->assertStatus(200);
