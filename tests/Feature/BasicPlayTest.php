@@ -7,12 +7,7 @@ use Tests\TestCase;
 
 class BasicPlayTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    public function test_basic_route()
     {
         $response = $this->get('/jugar/1');
 
