@@ -18,6 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/jugar/{secuencia}', function ($secuencia) {
+    if(preg_match('/[A-Za-z]/', $secuencia) || preg_match('[0]', $secuencia)) {
+        return "secuencia invalida";
+    }
   $secuencia_anterior = $secuencia;
   $secuencia = str_split($secuencia);
   $tablero = [
