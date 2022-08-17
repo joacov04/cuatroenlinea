@@ -22,9 +22,6 @@ jobs:
     - name: Copy .env
       run: ddev php -r "file_exists('.env') || copy('.env.example', '.env');"
 
-    - name: Generate key
-      run: ddev php artisan key:generate
-
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
