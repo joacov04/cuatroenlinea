@@ -33,6 +33,7 @@ Route::get('/jugar/{secuencia}', function ($secuencia) {
   $color = 'sky-500';
   foreach ($secuencia as $columna) {
     $color_siguiente = $color;
+    // color es sky ? entonces red : si no, sky
     $color = $color == 'sky-500' ? 'red-500' : 'sky-500';
     foreach ($tablero[$columna - 1] as $fila => $celda) {
       if ($celda == 'gray-200') {
