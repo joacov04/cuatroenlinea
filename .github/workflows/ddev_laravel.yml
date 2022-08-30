@@ -29,4 +29,4 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: ddev php artisan test
+      run: ddev exec vendor/bin/phpunit
