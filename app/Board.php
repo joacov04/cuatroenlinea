@@ -2,8 +2,10 @@
 
 namespace App;
 
+include "Piece.php";
+
 interface BoardInterface {
-    public function putPiece(Piece $piece, int $column) : bool;
+    public function putPiece(int $column, Piece $piece) : bool;
     public function getPiece(int $column, int $row) : ?Piece;
     public function cleanBoard() : void;
     public function getRowsCount() : int;
@@ -32,7 +34,7 @@ class Board implements BoardInterface {
         return $this->columns_count;
     }
 
-    public function putPiece(Piece $piece, int $column) : bool {
+    public function putPiece(int $column, Piece $piece) : bool {
         $column -= 1;
         if($column >= $this->getColumnsCount() || $column < 0) {
             throw new \Exception("Column out of range.");
@@ -65,9 +67,21 @@ class Board implements BoardInterface {
                 $this->columns[$x][$y] = "⬜";
             }
         }
-
     }
-}
 
+    public function showBoard() {
+        print("\n\n");
+        for($y = 0; $y < $this->getRowsCount(); $y++){
+            for($x = 0;$x < $this->getColumnsCount(); $x++){
+
+                print($this->columns[$x][$y]->getColor());
+
+            }
+            print("\n");
+        }
+        print("\n\n");
+    }
+
+}
 
 ?>
