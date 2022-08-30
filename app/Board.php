@@ -46,7 +46,6 @@ class Board implements BoardInterface {
         return true;
 
     }
-    // ⬜
     
     public function getPiece(int $column, int $row) : ?Piece {
         $column -= 1;
@@ -61,6 +60,11 @@ class Board implements BoardInterface {
     }
 
     public function cleanBoard() : void {
+        for($x = 0; $x < $this->getColumnsCount(); $x++) {
+            for($y = 0; $y < $this->getRowsCount(); $y++) {
+                $this->columns[$x][$y] = "⬜";
+            }
+        }
 
     }
 }
