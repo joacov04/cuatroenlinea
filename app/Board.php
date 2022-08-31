@@ -67,7 +67,7 @@ class Board implements BoardInterface {
 
     public function showBoard() {
         print("\n\n");
-        for($y = 0; $y < $this->getRowsCount(); $y++){
+        for($y = $this->getRowsCount()-1; $y >= 0; $y--){
             for($x = 0;$x < $this->getColumnsCount(); $x++){
 
                 if($this->columns[$x][$y] == NULL) {
@@ -87,16 +87,12 @@ $board = new Board;
 $blue = new Piece("🟦");
 $red = new Piece("🟥");
 print($board->putPiece(1,$red));
-print($board->putPiece(3,$blue));
-print($board->putPiece(2,$blue));
 print($board->putPiece(1,$blue));
-print($board->putPiece(2,$blue));
-print($board->putPiece(6,$red));
-print($board->putPiece(7,$blue));
+print($board->putPiece(2,$red));
+print($board->putPiece(3,$red));
 print($board->putPiece(4,$red));
+print($board->putPiece(5,$red));
+print($board->putPiece(6,$blue));
 print($board->putPiece(7,$blue));
-print($board->putPiece(3,$red));
-print($board->putPiece(1,$red));
-print($board->putPiece(3,$red));
 $board->showBoard();
 ?>
