@@ -1,7 +1,7 @@
 <?php
-
 namespace App;
 
+error_reporting(E_ALL ^ E_NOTICE);  
 include "Piece.php";
 
 interface BoardInterface {
@@ -61,9 +61,7 @@ class Board implements BoardInterface {
 
     public function cleanBoard() : void {
         for($x = 0; $x < $this->getColumnsCount(); $x++) {
-            for($y = 0; $y < $this->getRowsCount(); $y++) {
-                $this->columns[$x][$y] = "⬜";
-            }
+            $this->columns[$x] = [];
         }
     }
 
@@ -72,8 +70,8 @@ class Board implements BoardInterface {
         for($y = 0; $y < $this->getRowsCount(); $y++){
             for($x = 0;$x < $this->getColumnsCount(); $x++){
 
-                if($this->columns[$x][$y] == "⬜") {
-                    print($this->columns[$x][$y]);
+                if($this->columns[$x][$y] == NULL) {
+                    print("⬜");
                 } else {
                     print($this->columns[$x][$y]->getColor());
                 }
@@ -94,7 +92,7 @@ print($board->putPiece(2,$blue));
 print($board->putPiece(1,$blue));
 print($board->putPiece(2,$blue));
 print($board->putPiece(6,$red));
-print($board->putPiece(9,$blue));
+print($board->putPiece(7,$blue));
 print($board->putPiece(4,$red));
 print($board->putPiece(7,$blue));
 print($board->putPiece(3,$red));
