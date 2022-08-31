@@ -23,6 +23,7 @@ class Board implements BoardInterface {
         }
         $this->columns_count = $columns_count;
         $this->rows_count = $rows_count;
+        $this->cleanBoard();
 
     }
 
@@ -36,12 +37,9 @@ class Board implements BoardInterface {
 
     public function putPiece(int $column, Piece $piece) : bool {
         $column -= 1;
+        // print_r($this->columns);
         if($column >= $this->getColumnsCount() || $column < 0) {
             throw new \Exception("Column out of range.");
-        }
-
-        if(count($this->columns[$column]) >= $this->getRowsCount()) {
-            return false;
         }
 
         $this->columns[$column][] = $piece;
@@ -74,7 +72,11 @@ class Board implements BoardInterface {
         for($y = 0; $y < $this->getRowsCount(); $y++){
             for($x = 0;$x < $this->getColumnsCount(); $x++){
 
-                print($this->columns[$x][$y]->getColor());
+                if($this->columns[$x][$y] == "⬜") {
+                    print($this->columns[$x][$y]);
+                } else {
+                    print($this->columns[$x][$y]->getColor());
+                }
 
             }
             print("\n");
@@ -83,5 +85,20 @@ class Board implements BoardInterface {
     }
 
 }
-
+$board = new Board;
+$blue = new Piece("🟦");
+$red = new Piece("🟥");
+print($board->putPiece(1,$red));
+print($board->putPiece(3,$blue));
+print($board->putPiece(2,$blue));
+print($board->putPiece(1,$blue));
+print($board->putPiece(2,$blue));
+print($board->putPiece(6,$red));
+print($board->putPiece(9,$blue));
+print($board->putPiece(4,$red));
+print($board->putPiece(7,$blue));
+print($board->putPiece(3,$red));
+print($board->putPiece(1,$red));
+print($board->putPiece(3,$red));
+$board->showBoard();
 ?>
